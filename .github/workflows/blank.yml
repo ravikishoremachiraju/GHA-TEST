@@ -26,7 +26,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo "GIT_BRANCH_NAME=`echo "${GITHUB_REF##*/}`" >> $GITHUB_ENV && echo "the git commit is $GIT_BRANCH_NAME"
+        run: echo "GIT_BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV && echo "the git commit is $GIT_BRANCH_NAME"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
