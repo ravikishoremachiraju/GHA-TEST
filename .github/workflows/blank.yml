@@ -11,4 +11,4 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
-      - run: echo "BUILD_NUMBER=$GITHUB_RUN_NUMBER"
+      - run: echo "COMBINED_VAR=${{ github.run_number }}-${{ github.sha }}"
