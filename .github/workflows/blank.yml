@@ -13,6 +13,7 @@ jobs:
       - run: bats -v
       - name: Add GITHUB_WORKFLOW_LABEL env property with run number and commit short sha
         run: echo "GITHUB_WORKFLOW_LABEL=${{ github.run_number }}-$(echo "${{ github.sha }}" | cut -c1-7)" >> $GITHUB_ENV
+      - run: echo "$GITHUB_WORKFLOW_LABEL"
       - run: echo "${{ github.run_number }}-$(echo "${{ github.sha }}" | cut -c1-7)"
       
 
