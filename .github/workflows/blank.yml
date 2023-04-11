@@ -11,9 +11,6 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
-      - name: Add GITHUB_WORKFLOW_LABEL env property with commit short sha and run number
-        run: |
-          COMMIT_SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-8)
-          RUN_NUMBER=${{ github.run_number }}
-          GITHUB_WORKFLOW_LABEL="${RUN_NUMBER}-${COMMIT_SHORT_SHA}"
-          echo "GITHUB_WORKFLOW_LABEL=${GITHUB_WORKFLOW_LABEL}" >> $GITHUB_ENV
+      - name: Add GITHUB_WORKFLOW_LABEL env property with run number and commit short sha
+        run: echo "GITHUB_WORKFLOW_LABEL=${{ github.run_number }}-`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+
